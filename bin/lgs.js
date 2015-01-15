@@ -7,7 +7,7 @@ file_name_arr.pop()
 
 var file_name =  file_name_arr.join('/')+ "/index.js"
 
-console.log(file_name)
+// console.log(file_name)
 
 // Run external tool synchronously
 if (exec('node '+ file_name).code !== 0) {
