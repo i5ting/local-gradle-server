@@ -20,7 +20,7 @@ so
 
 ## Install 
 
-	 npm install -g lgs
+	 [sudo] npm install -g lgs
 	 	
 startup server
 
