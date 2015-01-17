@@ -13,7 +13,7 @@ var pwd = process.cwd()
 var output = pwd  + '/' + gradle_file_name	;
 
 var urll = "https://services.gradle.org/distributions/gradle-2.2.1-all.zip"
-urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
+// urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
 
 fs.exists(output, function (exists) {
 	if(exists == true){
