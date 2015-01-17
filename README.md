@@ -71,6 +71,7 @@ Set executable permissions for: /Users/sang/.gradle/wrapper/dists/gradle-2.2.1-a
 
 ## 版本历史
 
+- v1.1.2 doc + howto
 - v1.0.0 初始化版本 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "lgs",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "lgs is a local gradle server for android studio build",
   "main": "index.js",
   "scripts": {
