@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 require('shelljs/global');
 
-var Download = require('download');
 var fs = require('fs');
-var http = require('http');
-var Promise = require("bluebird");
+var http = require('http'); 
 var request = require("request");
-
+var progress = require('request-progress');
 var promisePipe = require("promisepipe");
 
 var gradle_file_name = "gradle-2.2.1-all.zip"
@@ -30,7 +28,7 @@ fs.exists(output, function (exists) {
 	}else{
 		console.log(output + " file not exist, start download it,maybe need some time...")
 		
-		urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
+		// urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
 		
 		// request(urll).pipe(fs.createWriteStream(output))
 		function clientError(e) {
@@ -38,7 +36,29 @@ fs.exists(output, function (exists) {
 		}
 		
 		promisePipe(
-		    request(urll).pipe(fs.createWriteStream(output))
+			// Note that the options argument is optional
+			// request(urll).pipe(fs.createWriteStream(output))
+			progress(request(urll), {
+			    throttle: 2000,  // Throttle the progress event to 2000ms, defaults to 1000ms
+			    delay: 1000      // Only start to emit after 1000ms delay, defaults to 0ms
+			})
+			.on('progress', function (state) {
+			    console.log('received size in bytes', state.received);
+			    // The properties bellow can be null if response does not contain
+			    // the content-length header
+			    console.log('total size in bytes', state.total);
+			    console.log('percent', state.percent + '%');
+			})
+			.on('error', function (err) {
+			    // Do something with err
+			})
+			.pipe(fs.createWriteStream(output))
+			.on('error', function (err) {
+			    // Do something with err
+			})
+			.on('close', function (err) {
+			    // Saved to doogle.png!
+			})
 		).then(function(streams){
 		    console.log("Yay, all streams are now closed/ended/finished!");
 				start_server();
@@ -90,16 +110,4 @@ function start_node_server(){
 	  exit(1);
 	}
 }
-
-function download(url, dest, cb) {
-  var file = fs.createWriteStream(dest);
-  var request = http.get(url, function(response) {
-    response.pipe(file);
-    file.on('finish', function() {
-      file.close(cb);  // close() is async, call cb after close completes.
-    });
-  }).on('error', function(err) { // Handle errors
-    fs.unlink(dest); // Delete the file async. (But we don't check the result)
-    if (cb) cb(err.message);
-  });
-};
+ 

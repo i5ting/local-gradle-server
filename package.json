@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/i5ting/local-gradle-server",
   "dependencies": {
-    "bluebird": "^2.7.0",
-    "download": "^3.3.0",
     "express": "^4.11.0",
+    "promisepipe": "^1.0.1",
     "request": "^2.51.0",
+    "request-progress": "^0.3.1",
     "shelljs": "^0.3.0"
   }
 }
