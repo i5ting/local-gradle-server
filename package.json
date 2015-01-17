@@ -1,15 +1,15 @@
 {
   "name": "lgs",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "lgs is a local gradle server for android studio build",
   "main": "index.js",
   "scripts": {
     "start": "npm publish .",
-    "test": "./clean.sh && node bin/lgs.js"
+    "test": "./clean.sh && node bin/lgs.js -o"
   },
   "preferGlobal": "true",
   "bin": {
-    "ip": "bin/lgs.js"
+    "lgs": "bin/lgs.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/i5ting/local-gradle-server",
   "dependencies": {
+    "cliparoo": "^1.0.0",
     "express": "^4.11.0",
+    "open": "0.0.5",
     "promisepipe": "^1.0.1",
     "request": "^2.51.0",
     "request-progress": "^0.3.1",

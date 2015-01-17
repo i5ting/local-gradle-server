@@ -10,16 +10,10 @@ var promisePipe = require("promisepipe");
 var gradle_file_name = "gradle-2.2.1-all.zip"
 var src = 'distributions/' + gradle_file_name;
 var pwd = process.cwd()  
-
-// pwd = 
 var output = pwd  + '/' + gradle_file_name	;
- 
-
-console.log(src)
-console.log(output)
-
 
 var urll = "https://services.gradle.org/distributions/gradle-2.2.1-all.zip"
+urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
 
 fs.exists(output, function (exists) {
 	if(exists == true){
@@ -28,16 +22,8 @@ fs.exists(output, function (exists) {
 	}else{
 		console.log(output + " file not exist, start download it,maybe need some time...")
 		
-		// urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
-		
-		// request(urll).pipe(fs.createWriteStream(output))
-		function clientError(e) {
-		    return e.code >= 400 && e.code < 500;
-		}
-		
 		promisePipe(
 			// Note that the options argument is optional
-			// request(urll).pipe(fs.createWriteStream(output))
 			progress(request(urll), {
 			    throttle: 2000,  // Throttle the progress event to 2000ms, defaults to 1000ms
 			    delay: 1000      // Only start to emit after 1000ms delay, defaults to 0ms
@@ -74,9 +60,10 @@ var file_name_arr = __dirname.split('/')
 file_name_arr.pop()
 
 var file_name =  file_name_arr.join('/') + "/index.js"
+var www_gradle_zip_file = file_name_arr.join('/') + "/www/" + gradle_file_name
 
 function start_server(){
-	var www_gradle_zip_file = file_name_arr.join('/') + "/www/" + gradle_file_name
+
 	fs.exists(www_gradle_zip_file, function (exists) {
 		if(exists == true){
 			start_node_server();
@@ -105,7 +92,7 @@ function start_server(){
 
 function start_node_server(){
 	// Run external tool synchronously
-	if (exec('node '+ file_name).code !== 0) {
+	if (exec('node '+ file_name + ' ' + process.argv[2] ).code !== 0) {
 	  echo('Error: Local Gradle Server startup failed');
 	  exit(1);
 	}
