@@ -13,14 +13,31 @@ var pwd = process.cwd()
 var output = pwd  + '/' + gradle_file_name	;
 
 var urll = "https://services.gradle.org/distributions/gradle-2.2.1-all.zip"
-// urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
+urll = 'https://github.com/i5ting/awesome-mac-practice/blob/master/app/AxureRP-extension-for-Chrome-0.6.zip?raw=true'
 
+var file_name_arr = __dirname.split('/')
+file_name_arr.pop()
+
+var file_name =  file_name_arr.join('/') + "/index.js"
+var www_gradle_zip_file = file_name_arr.join('/') + "/www/" + gradle_file_name
+var is_exist_www_gradle_zip_file = false;
+fs.exists(www_gradle_zip_file, function (exists) {
+	if(exists == true){
+		is_exist_www_gradle_zip_file = true;
+	}
+});
+		
 fs.exists(output, function (exists) {
 	if(exists == true){
 		// 如果文件已经存在，就直接启动服务器
 		start_server();
 	}else{
 		console.log(output + " file not exist, start download it,maybe need some time...")
+		// 本地没有zip，但是www里有zip，也可以启动
+		if(is_exist_www_gradle_zip_file == true){
+			start_server();
+			return;
+		}
 		
 		promisePipe(
 			// Note that the options argument is optional
@@ -56,11 +73,6 @@ fs.exists(output, function (exists) {
 	}
 });
 
-var file_name_arr = __dirname.split('/')
-file_name_arr.pop()
-
-var file_name =  file_name_arr.join('/') + "/index.js"
-var www_gradle_zip_file = file_name_arr.join('/') + "/www/" + gradle_file_name
 
 function start_server(){
 
