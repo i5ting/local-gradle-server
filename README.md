@@ -4,6 +4,8 @@ lgs is a local gradle server for android studio build
 
 [![npm version](https://badge.fury.io/js/lgs.svg)](http://badge.fury.io/js/lgs)
 
+[技术栈和代码记录](howto.md)
+
 ## reason
 
 ```
@@ -58,8 +60,6 @@ Downloading http://127.0.0.1:5678/gradle-2.2.1-all.zip
 Unzipping /Users/sang/.gradle/wrapper/dists/gradle-2.2.1-all/2tjqpr11coprdv33p03vafhh49/gradle-2.2.1-all.zip to /Users/sang/.gradle/wrapper/dists/gradle-2.2.1-all/2tjqpr11coprdv33p03vafhh49
 Set executable permissions for: /Users/sang/.gradle/wrapper/dists/gradle-2.2.1-all/2tjqpr11coprdv33p03vafhh49/gradle-2.2.1/bin/gradle
 ```
- 
-## Example
 
 ## Contributing
 
