@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm publish .",
-    "test": "node bin/lgs.js"
+    "test": "./clean.sh && node bin/lgs.js"
   },
   "preferGlobal": "true",
   "bin": {
@@ -22,7 +22,10 @@
   },
   "homepage": "https://github.com/i5ting/local-gradle-server",
   "dependencies": {
+    "bluebird": "^2.7.0",
+    "download": "^3.3.0",
     "express": "^4.11.0",
+    "request": "^2.51.0",
     "shelljs": "^0.3.0"
   }
 }
