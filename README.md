@@ -21,15 +21,22 @@ so
 ## Install 
 
 	 npm install -g lgs
-	 	 
-## Usage
-
+	 	
 startup server
 
 	> lgs
 	Local Gradle Server listening at http://0.0.0.0:5678
 	http://127.0.0.1:5678/gradle-2.2.1-all.zip
+	
+Note: 
+	
+- if in current path, gradle-2.2.1-all.zip is exist , it doesn't download anything.
+- if gradle-2.2.1-all.zip is not exist , it will download gradle-2.2.1-all.zip from https://services.gradle.org/distributions/gradle-2.2.1-all.zip.
  
+
+## Usage
+
+
 change in  android studio `project/gradle/wrapper/gradle-wrapper.properties`
 
 ```
