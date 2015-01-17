@@ -24,9 +24,10 @@ so
 	 	
 startup server
 
-	> lgs
+	> [sudo] lgs
 	Local Gradle Server listening at http://0.0.0.0:5678
-	http://127.0.0.1:5678/gradle-2.2.1-all.zip
+	distributionUrl=http\://127.0.0.1:5678/gradle-2.2.1-all.zip
+	copied! you can paste anywhere
 	
 Note: 
 	
