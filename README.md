@@ -18,7 +18,10 @@ this is unpatientfull
  
 url  http://services.gradle.org/distributions/gradle-1.12-all.zip is in android studio project/gradle/wrapper/gradle-wrapper.properties
 
-so 
+so i want 
+
+- 如果当前文件夹有gradle.zip文件就直接用，没有就下载一个
+- 起一个httpserver
 
 ## Install 
 
